@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './App.css';
 import { SearchBar } from './components';
 import { IPokemon } from './types';
 import { pokemonListReducer } from './utils';
