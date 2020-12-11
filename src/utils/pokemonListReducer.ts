@@ -1,11 +1,14 @@
 import { IPokemon } from '../types';
 
 type State = {
-  [id: number]: IPokemon
-}
-type Action = { type: 'add', data: IPokemon } | { type: 'rem', data: IPokemon }
+  [id: number]: IPokemon;
+};
+type Action = { type: 'add'; data: IPokemon } | { type: 'rem'; data: IPokemon };
 
-export function pokemonListReducer(state: State, {type, data}: Action): State {
+export function pokemonListReducer(
+  state: State,
+  { type, data }: Action
+): State {
   switch (type) {
     case 'add':
       return { ...state, [data.id]: data };
@@ -17,7 +20,7 @@ export function pokemonListReducer(state: State, {type, data}: Action): State {
           return {
             ...list,
             [id]: pokemon
-          }
+          };
         }, {});
   }
- }
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPokemon  } from '../types';
+import { IPokemon } from '../types';
 import { useSearchPokemon } from './useSearchPokemon';
 
 export const SearchBar = React.memo(({ onClickAddPokemon }: SearchBarProps) => {
@@ -8,9 +8,13 @@ export const SearchBar = React.memo(({ onClickAddPokemon }: SearchBarProps) => {
   return (
     <>
       <h3>Procure por um Pokemon</h3>
-      <input type="text" onChange={(e) => search(e.target.value)} />
+      <input
+        name="search"
+        type="text"
+        onChange={(e) => search(e.target.value)}
+      />
       {loading && <span>Carregando...</span>}
-      {(data && !loading) && (
+      {data && !loading && (
         <div>
           <h4>Resultado da busca:</h4>
           {data.name}

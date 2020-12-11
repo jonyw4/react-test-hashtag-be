@@ -1,13 +1,13 @@
 import * as React from 'react';
 import debounce from 'lodash.debounce';
-import { searchPokemon } from '../utils'
-import { IPokemon  } from '../types';
+import { searchPokemon } from '../utils';
+import { IPokemon } from '../types';
 
 type UseSearchResponse = {
   search: React.Dispatch<React.SetStateAction<string>>;
   loading: boolean;
   data: IPokemon | undefined;
-}
+};
 
 /**
  * Hook to set, get and wait for a pokemon request
@@ -18,7 +18,7 @@ export function useSearchPokemon(): UseSearchResponse {
   const [data, setData] = React.useState<IPokemon | undefined>(undefined);
 
   React.useEffect(() => {
-    async function updateData(){
+    async function updateData() {
       setData(undefined);
       setLoading(true);
       try {
@@ -27,13 +27,12 @@ export function useSearchPokemon(): UseSearchResponse {
         setData(pokemon || undefined);
       } catch (e) {
         setLoading(false);
-        setData(undefined)
+        setData(undefined);
       }
     }
     const debouncedUpdateData = debounce(updateData, 300);
     debouncedUpdateData();
-  }, [searchQuery])
-  
+  }, [searchQuery]);
 
-  return { search, loading, data }
+  return { search, loading, data };
 }
